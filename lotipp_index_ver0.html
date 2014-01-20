@@ -9,6 +9,7 @@
 <script src="scripts/formatumEllenorzes.js"></script>
 <script src="scripts/checkTippsOnServer.js"></script>
 <script src="scripts/pref.js"></script>
+<script src="scripts/errorReport.js"></script>
 <style>
 body
 {
@@ -157,9 +158,9 @@ overflow:scroll;
 </head>
 
 <body onload="checkServer()">
-
+<div id="problemReport" style="height: 100%; width: 100%; position: relative;"></div>
 <table width="404" id="mainTable">
-	<div id="problemReport"></div>
+	
 	<tr>
   		<td width="396" id="mainTitel">
         Lotip.hu

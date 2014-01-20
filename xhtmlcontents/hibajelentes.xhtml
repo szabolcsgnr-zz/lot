@@ -1,0 +1,54 @@
+<style>
+#takaro{
+	opacity:    0.7; 
+  background-color:black; 
+  width:      100%;
+  height:     100%; 
+  z-index:    10;
+  top:        0; 
+  left:       0; 
+  position:   fixed;
+	}
+#kistakaro{
+
+  width:      300px;
+  height:     300px; 
+  z-index:    11;
+  top:        50%; 
+  left:       50%; 
+  position:   fixed;
+  
+  	margin-left: -150px; /*half width*/
+	
+	text-align:left;
+	margin-top: -250px; /*half height*/
+	}
+.szovegStyle100{
+	border:none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #6b6b6b;
+	}
+</style>
+
+<div id="takaro" >
+<div id="kistakaro">
+<form>
+<a class="szovegStyle100" >Mail:</a><br>
+<input type="text" id="mail" value=""><br>
+<a class="szovegStyle100" >Röviden:</a><br>
+<input type="text" id="sub" size="30"><br>
+<a class="szovegStyle100" >Comment: *</a><br>
+
+<textarea id="comment" style="background-color:white;" cols="32" rows="10" onkeyup="charCountTest()"></textarea>
+<br><br>
+<input type="button" value="Küldés" onclick="sendRep()">
+<input type="reset" value="Törlés">
+<input type="button" value="Vissza" onclick="removeRepBox()">
+
+</form>
+<p id="mailStatusIndicator" style="color:white; "></p>
+</div>
+</div>
