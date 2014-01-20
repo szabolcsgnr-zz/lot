@@ -5,6 +5,11 @@
 <title>lotipp.hu</title>
 <link rel="shortcut icon" href="icon.ico">
 <style>
+body
+{
+  margin: 0;
+  padding: 0;
+}
 #mainTitel {
 	font-family: "Arial Black", Gadget, sans-serif;
 	font-size: 24pt;
@@ -79,7 +84,8 @@
 	margin-top: -115px; /*half height*/
 	}
 
-#pref{
+#pref0{
+	
 	background: none;
 	border: none;
 	font-family: Arial, Helvetica, sans-serif;
@@ -91,18 +97,41 @@
 	margin-right:10px;
 	
 	}
-#prefPanel{
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	text-align: center;    
-	margin-left: -195px; /*half width*/
-	margin-top: -100px; /*half height*/
-	background-color:grey;
 
-	width:390px;
+#prefPanel{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #6b6b6b;
+	position: absolute;
+	bottom:0px;
+width:100%;
+height:20px;
+background:white;
+
+
+
+transition-property:height,background;
+transition-duration:0.5s;
+transition-timing-function:linear;
+
+/* Safari */
+-webkit-transition-property:height,background;
+-webkit-transition-duration:0.5s;
+-webkit-transition-timing-function:linear;
+
+	}
+#prefPanel:hover{
 	height:200px;
+	opacity:0.8;
+	background:grey;
 	
+	}
+#prefPlaceHolder{
+	height:100%-20px;
+	width:100%;
+	color:white;
 	}
 </style>
 
@@ -237,20 +266,25 @@ function clearTips(){
 	document.getElementById("tipNotOK").hidden=true;
 	document.getElementById("err").innerHTML="";
 	}
-function getPref(){
+function getPref0(towhite){
+	if(towhite==1){
+	document.getElementById("pref0").style.color="white";
+	setTimeout(function(){
+	document.getElementById("prefPlaceHolder").innerHTML="VAlami beállítások";
+	},700);
 	
-	document.getElementById("prefPanel").hidden=false;
-}
-function closePref(){
-	document.getElementById("prefPanel").hidden=true;
-
+	
+	}else{
+	document.getElementById("pref0").style.color=" #6b6b6b";
+	document.getElementById("prefPlaceHolder").innerHTML="";
 	}
+}
 </script>
 
 </head>
 
 <body>
-<div id="prefPanel" hidden="true"></div>
+
 
 
 <table width="404" id="mainTable">
@@ -269,7 +303,8 @@ function closePref(){
   </tr>
   
    <tr >
-  <td height="200px" align="center" valign="top" >
+  <td height="200px" align="center" valign="top" style="position:relative;">
+  
   		<form id="formOne" style="margin-top:30px">
         <input class="numIn" type="text" id="tip0" maxlength="2" size="2" onkeyup="checkIfNum(this.value)">
         <input class="numIn" type="text" id="tip1" maxlength="2" size="2" onkeyup="checkIfNum(this.value)">
@@ -284,14 +319,17 @@ function closePref(){
         </div>
         <form>
        
-        
+        <div  id="prefPanel" onmouseover="getPref0(1)" onmouseout="getPref0(0)">
+     <a href="#" id="pref0" >Beállítások</a>
+     <div id="prefPlaceHolder"></div>
+     </div>
      
   </td>
   </tr>
   
   <tr>
   <td>
-     <a href="#" id="pref" onclick="getPref" >Beállítások</a>
+  
   <hr />
     <table align="center" width="100%">
     <tr>
