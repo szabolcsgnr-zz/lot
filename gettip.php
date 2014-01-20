@@ -5,11 +5,11 @@ $tip2 = intval($_GET['tip2']);
 $tip3 = intval($_GET['tip3']);
 $tip4 = intval($_GET['tip4']);
 
-
-$con = mysqli_connect('localhost','root','');
-if (!$con)
-  {
-  die('Could not connect: ' . mysqli_error($con));
+ 
+ $con = mysqli_connect('localhost','root','');
+ if (!$con)
+   {
+   die('Could not connect: ' . mysqli_error($con));
   }
 
 mysqli_select_db($con,"hun_five_lotto");
@@ -28,5 +28,6 @@ if($total<"1"){
 		echo 'false';
 		}
 
-mysqli_close($con);
-?>
+ 
+ mysqli_close($con);
+ ?> 
