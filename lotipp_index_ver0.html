@@ -1,0 +1,328 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>lotipp.hu</title>
+<link rel="shortcut icon" href="icon.ico">
+<style>
+#mainTitel {
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size: 24pt;
+	color: #686e6f;
+	text-align: center;
+}
+#mainTable {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	text-align: center;    
+	width:400px;
+	height:400px;
+	margin-left: -200px; /*half width*/
+	margin-top: -250px; /*half height*/
+	
+}
+#subTitle {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: italic;
+	font-weight: bold;
+	color: #333e5f;
+	text-align: center;
+	vertical-align: top;
+}
+#menuSelected{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #6b6b6b;
+	width:400px;
+	height:100px;
+	max-height:100px;
+	text-align: justify;
+}
+#butt { 
+	background:none;
+	border:none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #6b6b6b;
+ }
+#buttSend {
+	background: none;
+	border: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+	color: green;
+	text-decoration: none;
+ }
+.numIn{
+	width:34px;
+	height:30px;
+	border-color:green;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 26px;
+	color: #6b6b6b;
+	
+}
+#err{
+	height:20px;
+	color:red;
+	}
+.tipOK{
+	 position: absolute;
+	left: 50%;
+	top: 50%;   
+	margin-left: 150px; /*half width*/
+	margin-top: -115px; /*half height*/
+	}
+
+#pref{
+	background: none;
+	border: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #6b6b6b;
+	margin-bottom:10px;
+	margin-right:10px;
+	
+	}
+#prefPanel{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	text-align: center;    
+	margin-left: -195px; /*half width*/
+	margin-top: -100px; /*half height*/
+	background-color:grey;
+
+	width:390px;
+	height:200px;
+	
+	}
+</style>
+
+<script>
+function whatsThis()
+{
+document.getElementById("menuSelected").innerHTML="Biztos hallottál már arról, hogy alakultak lottózó baráti társaságok, akik úgy\ növelték nyerési esélyeiket, hogy összebeszéltek, hogy különböző számokat játszanak meg.\
+Ennek az oldalnak a célja, hogy feltöltsd, hogy milyen számokat játszol meg, illetve\
+ellenőrizni tudd, hogy más, játszotta-e már meg ezt a számsort, így növelve az \
+éltalotok kiválasztott számok nyerési esélyét";
+}
+function howTo()
+{
+document.getElementById("menuSelected").innerHTML="Annyit kell tenned, hogy a megjátszani kívánt számot beírod a tipp mezőbe. Ha az\
+ellenőrzésre kattintasz, ellenőrizheted, hogy a felhasználóink közül adta-e már fel\
+valaki a megadott szám kombinációt. Ha nem, és megjátszod akkor rákattinthatsz\
+a megjátszás lehetőségre, ezzel név nélkül elküldve a hetente frissülő adatbázisunkba\
+a tipped, hogy segíts másoknak, nehogy ugyanazt a számsort játszák meg. \
+Ha nem akarsz tippelni, generálhatsz is egy random kombinációt, amiről biztos lehetsz,\
+hogy a felhasználóink tippjeitől eltérő, egyedi.";
+}
+function felt()
+{
+document.getElementById("menuSelected").innerHTML="Az oldal használata teljesen ingyenes. A tippek beküldése önkéntes, anonim. Az\ oldal\
+felületén egy reklám van elhelyezve, amely az oldal üzemeltetésének a költségeit fedezi.\
+Ezen felül, ha tetszik az oldal támogathatod az oldal készítőjét, ezzel is segítve az oldal\
+zavartalan működését, terjesztését.";
+}
+function nothing(){
+	document.getElementById("menuSelected").innerHTML="";
+}
+function checkIfNum(str){
+	if(str.length==0){
+		document.getElementById("err").innerHTML="";
+		toGreen();
+		return;
+		}
+	if(isNaN(str)){
+		document.getElementById("err").innerHTML="Helytelen számformátumot használtál!";
+	toRed();
+		return;
+		}
+	if(parseInt(str)>90){
+		document.getElementById("err").innerHTML="Helytelen számformátumot használtál!";
+	toRed();
+		return;
+		}
+	if(parseInt(str)<1){
+		document.getElementById("err").innerHTML="Helytelen számformátumot használtál!";
+	toRed();
+		return;
+		}
+	
+
+	
+}
+function toRed(){
+	document.getElementById("tip0").style.borderColor="red";
+	document.getElementById("tip1").style.borderColor="red";
+	document.getElementById("tip2").style.borderColor="red";
+	document.getElementById("tip3").style.borderColor="red";
+	document.getElementById("tip4").style.borderColor="red";
+	}
+function toGreen(){
+	document.getElementById("tipOK").hidden=true;
+	document.getElementById("tipNotOK").hidden=true;
+	document.getElementById("tip0").style.borderColor="#6b6b6b";
+	document.getElementById("tip1").style.borderColor="#6b6b6b";
+	document.getElementById("tip2").style.borderColor="#6b6b6b";
+	document.getElementById("tip3").style.borderColor="#6b6b6b";
+	document.getElementById("tip4").style.borderColor="#6b6b6b";
+	document.getElementById("err").innerHTML="";
+	}
+function check(){
+ var tipps = new Array();
+tipps[0]=document.getElementById("tip0").value;
+tipps[1]=document.getElementById("tip1").value;
+tipps[2]=document.getElementById("tip2").value;
+tipps[3]=document.getElementById("tip3").value;
+tipps[4]=document.getElementById("tip4").value;
+	var sorted =tipps.sort();
+	for (var i = 0; i < sorted.length - 1; i++) {
+    if (sorted[i + 1] == sorted[i]) {
+        document.getElementById("err").innerHTML="Nem különböznek a megadott számok!";
+		toRed();
+		return;
+    }
+}
+
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+	if (xmlhttp.readyState<4){
+		
+		}  
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    if(xmlhttp.responseText=="true"){
+	document.getElementById("tipOK").hidden=false;
+	document.getElementById("tipNotOK").hidden=true;
+	}else{
+		document.getElementById("tipOK").hidden=true;
+		document.getElementById("tipNotOK").hidden=false;
+		document.getElementById("err").innerHTML="Ezt a számot már valaki megjátszotta az oldal használói közül";
+		}
+    }
+  }
+ var tipps = new Array();
+tipps[0]=document.getElementById("tip0").value;
+tipps[1]=document.getElementById("tip1").value;
+tipps[2]=document.getElementById("tip2").value;
+tipps[3]=document.getElementById("tip3").value;
+tipps[4]=document.getElementById("tip4").value;
+
+
+xmlhttp.open("GET","gettip.php?tip0="+tipps[0]+"&tip1="+tipps[1]+"&tip2="+tipps[2]+"&tip3="+tipps[3]+"&tip4="+tipps[4],true);
+xmlhttp.send();
+}
+function clearTips(){
+	document.getElementById("tip0").value="";
+	document.getElementById("tip1").value="";
+	document.getElementById("tip2").value="";
+	document.getElementById("tip3").value="";
+	document.getElementById("tip4").value="";
+	document.getElementById("tipNotOK").hidden=true;
+	document.getElementById("err").innerHTML="";
+	}
+function getPref(){
+	
+	document.getElementById("prefPanel").hidden=false;
+}
+function closePref(){
+	document.getElementById("prefPanel").hidden=true;
+
+	}
+</script>
+
+</head>
+
+<body>
+<div id="prefPanel" hidden="true"></div>
+
+
+<table width="404" id="mainTable">
+
+	<tr>
+  		<td width="396" id="mainTitel">
+        Lotip.hu
+		</td>
+  	</tr>
+
+  <tr>
+  <td>
+   <p id="subTitle">Növeld nyerési esélyeid!</p>
+   <hr />
+  </td>
+  </tr>
+  
+   <tr >
+  <td height="200px" align="center" valign="top" >
+  		<form id="formOne" style="margin-top:30px">
+        <input class="numIn" type="text" id="tip0" maxlength="2" size="2" onkeyup="checkIfNum(this.value)">
+        <input class="numIn" type="text" id="tip1" maxlength="2" size="2" onkeyup="checkIfNum(this.value)">
+        <input class="numIn" type="text" id="tip2" maxlength="2" size="2" onkeyup="checkIfNum(this.value)">
+        <input class="numIn" type="text" id="tip3" maxlength="2" size="2" onkeyup="checkIfNum(this.value)">
+        <input class="numIn" type="text" id="tip4" maxlength="2" size="2" onkeyup="checkIfNum(this.value)">
+        <div id="err"></div>
+        <div style="margin-top:40px;">
+        
+        <a href="#" id="buttSend" style="margin-right:30px" onclick="check()">Ellenőrzöm</a>
+        <a href="#" id="buttSend" >Megjátszom</a>
+        </div>
+        <form>
+       
+        
+     
+  </td>
+  </tr>
+  
+  <tr>
+  <td>
+     <a href="#" id="pref" onclick="getPref" >Beállítások</a>
+  <hr />
+    <table align="center" width="100%">
+    <tr>
+    	<td width="33%" >
+        	 <a id="butt" href="#" onmouseover="whatsThis()" onmouseout="nothing()">Mi is ez? </a>
+    	</td>
+   
+   	  	<td width="33%" >
+        <a id="butt" href="#" onmouseover="howTo()" onmouseout="nothing()">Hogy használjam? </a>
+        	
+    	</td>
+     
+     	<td width="33%">
+        <a id="butt" href="#" onmouseover="felt()" onmouseout="nothing()">Feltételek</a>
+         
+    	</td>
+        
+        
+    </tr>
+      
+    </table>
+    
+    <div id="menuSelected">
+        
+    </div>
+     </td>
+  </tr>
+</table>
+
+<a href="#" onclick="clearTips()"><img src="X_mark.gif" hidden="true" class="tipOK" id="tipNotOK"width="42" height="42" ></a>
+<img src="pipa.png" hidden="true" class="tipOK" id="tipOK" width="42" height="42">
+
+</body>
+</html>
