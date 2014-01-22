@@ -21,7 +21,7 @@ xmlhttp.onreadystatechange=function()
     prefContent=xmlhttp.responseText;
     }
   }
-xmlhttp.open("GET","xhtmlcontents/prefTabla.xhtml",true);
+xmlhttp.open("GET","textcontents/preftabla.txt",true);
 xmlhttp.send();
 	
 	

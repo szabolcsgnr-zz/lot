@@ -1,7 +1,6 @@
 <style>
 #takaro{
-	opacity:    0.7; 
-  background-color:black; 
+	background-color: rgba(0, 0, 0, 0.6);
   width:      100%;
   height:     100%; 
   z-index:    10;
@@ -10,9 +9,10 @@
   position:   fixed;
 	}
 #kistakaro{
-
+background-color: black;
+opacity:0.93;
   width:      300px;
-  height:     300px; 
+  height:     330px; 
   z-index:    11;
   top:        50%; 
   left:       50%; 
@@ -24,6 +24,7 @@
 	margin-top: -250px; /*half height*/
 	}
 .szovegStyle100{
+	margin-left:20px;
 	border:none;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
@@ -37,18 +38,18 @@
 <div id="kistakaro">
 <form>
 <a class="szovegStyle100" >Mail:</a><br>
-<input type="text" id="mail" value=""><br>
+<input type="text" id="mail" value="" style="margin-left:30px;"><br>
 <a class="szovegStyle100" >Röviden:</a><br>
-<input type="text" id="sub" size="30"><br>
+<input type="text" id="sub" size="30" style="margin-left:30px;"><br>
 <a class="szovegStyle100" >Comment: *</a><br>
 
-<textarea id="comment" style="background-color:white;" cols="32" rows="10" onkeyup="charCountTest()"></textarea>
+<textarea id="comment" style="background-color:white;margin-left:30px;" cols="32" rows="10" onkeyup="charCountTest()"></textarea>
 <br><br>
-<input type="button" value="Küldés" onclick="sendRep()">
+<input type="button" value="Küldés" onclick="sendRep()" style="margin-left:30px;">
 <input type="reset" value="Törlés">
 <input type="button" value="Vissza" onclick="removeRepBox()">
 
 </form>
-<p id="mailStatusIndicator" style="color:white; "></p>
+<p id="mailStatusIndicator" style="color:white;margin-left:30px; "></p>
 </div>
 </div>

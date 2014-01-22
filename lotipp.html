@@ -131,6 +131,11 @@ transition-timing-function:linear;
 -webkit-transition-timing-function:linear;
 
 	}
+	@-moz-document url-prefix() {
+		.prefPanel{
+			bottom:145px;
+		}
+		}
 .prefPanel:hover{
 	width:100%;
 	height:200px;
@@ -141,7 +146,6 @@ overflow:scroll;
  max-height:200px;
 	}
 .prefPanel:hover #pref0{
-	
 	font-size: 20px;
 	
 	color: white;
@@ -183,6 +187,7 @@ overflow:scroll;
         <input class="numIn" type="text" id="tip2" maxlength="2" size="2" onkeyup="checkIfNum(this.value)">
         <input class="numIn" type="text" id="tip3" maxlength="2" size="2" onkeyup="checkIfNum(this.value)">
         <input class="numIn" type="text" id="tip4" maxlength="2" size="2" onkeyup="checkIfNum(this.value)">
+       </form>
         <div id="err"></div>
         <div style="margin-top:40px;">
         <script src="scripts/randomButtonChanger.js"></script>
@@ -190,7 +195,7 @@ overflow:scroll;
         <a href="#" class="buttSend" id="ellVrand"style="margin-right:30px" onclick="check()">Ellenőrzöm</a>
         <a href="#" class="buttSend" >Megjátszom</a>
         </div>
-        <form>
+        
        
         <div  class="prefPanel" id="prefPanel" onmouseover="getPref0()" >
      <a href="#" id="pref0" title="Beálltások, további funkciók, hibajelentés" >Beállítások</a>

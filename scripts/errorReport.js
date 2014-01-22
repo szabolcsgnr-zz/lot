@@ -1,7 +1,6 @@
 // hibajelentes kuldese
 function charCountTest(){
-	document.getElementById("mailStatusIndicator").innerHTML=document.getElementById("comment").value.length+' karakter, a '
-	+'300 karakterből';
+	document.getElementById("mailStatusIndicator").innerHTML=document.getElementById("comment").value.length+" karakter";
 	}
 function hibajelentes(){
 	document.getElementById("problemReport").innerHTML="";
@@ -22,7 +21,7 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("problemReport").innerHTML=xmlhttp.responseText;
     }
   }
-xmlhttp.open("GET","xhtmlcontents/hibajelentes.xhtml",true);
+xmlhttp.open("GET","textcontents/hibajelentes.txt",true);
 xmlhttp.send();
 
 	}
@@ -47,7 +46,9 @@ xmlhttp.onreadystatechange=function()
     {
 	document.getElementById("mailStatusIndicator").innerHTML="Eredmény: "+xmlhttp.responseText+"<br>Ez az ablak 5 másodperc"
 	+" múlva bezárul.";
-	//setTimeout(removeRepBox(),5000);
+	
+	setTimeout(function removeRepBox(){
+	document.getElementById("problemReport").innerHTML="";	},5000);
 	}
     
   }
